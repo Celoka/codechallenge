@@ -79,6 +79,4 @@ async function listMajors(auth) {
     });
 }
 
-run()
-
 module.exports = run;

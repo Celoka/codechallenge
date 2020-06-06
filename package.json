@@ -1,14 +1,16 @@
 {
   "name": "codechallenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "Coding test",
   "main": "index.js",
   "scripts": {
     "start": "node ./api/app.js",
-    "start:dev": "nodemon --exec babel-node ./api/app.js"
+    "start:dev": "nodemon ./api/app.js",
+    "eslint": "eslint ./",
+    "eslint-fix": "eslint ./ --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Eloka Chima",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -28,6 +30,7 @@
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
+    "eslint": "^7.2.0",
     "nodemon": "^2.0.4"
   }
 }

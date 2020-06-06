@@ -29,6 +29,7 @@ async function getRequestData(req, res) {
   }
 }
 
+
 /**
  * @description This controller creates buy or sell request. Pulls data from the google
  * sheet and populates the DB.
@@ -39,16 +40,16 @@ async function getRequestData(req, res) {
  * @return {object} return an object containing success or error message
  */
 async function createRequestData(req, res) {
+  const arr = ['buyRequest', 'sellRequest']
   try {
-    run();
+    await run();
     const check = req.body.loadData;
     if (check === 'true') {
-      const buyReqData = fs.readFileSync(path.join(__dirname, 'buyRequest.json'));
-      const sellReqData = fs.readFileSync(path.join(__dirname, 'sellRequest.json'));
-      const buy = JSON.parse(buyReqData);
-      const sell = JSON.parse(sellReqData);
-      await insertData(buy, 'buyRequest');
-      await insertData(sell, 'sellRequest');
+      for (i = 0; i < arr.length; i++){
+        let reqData = fs.readFileSync(path.join(__dirname, `${arr[i]}.json`))
+        let data = JSON.parse(reqData)
+        await insertData(data, arr[i])
+      }
       res.status(201).json({ message: 'Data added to database' });
     } else {
       res.status(400).json({ message: 'No data was added to the database' });

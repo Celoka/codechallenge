@@ -11,7 +11,7 @@ dotenv.config();
 async function startDatabase() {
     const mongo = new MongoMemoryServer();
     const mongoDBURL = await mongo.getConnectionString();
-    const connection = await MongoClient.connect(mongoDBURL, { 
+    const connection = await MongoClient.connect(mongoDBURL || MONGODB_URI, { 
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

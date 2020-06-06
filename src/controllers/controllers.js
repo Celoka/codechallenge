@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import { insertData, getData, getTotal } from '../database/data';
 import run from '../googlesheets/sheets';
 
@@ -45,9 +44,12 @@ async function createRequestData(req, res) {
     const check = req.body.loadData;
     if (check === 'true') {
       for (const item of arr) {
-        let reqData = fs.readFileSync(path.join(__dirname, `${item}.json`))
+        let reqData = fs.readFileSync(`src/${item}.json`)
         let data = JSON.parse(reqData)
-        insertData(data, item)
+         if (await getTotal(item) === data.length) {
+          res.status(200).json({ message: 'Data has been loaded' })
+        }
+        await insertData(data, item)
       }
     res.status(201).json({ message: 'Data added to database' });
     } else {

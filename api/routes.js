@@ -1,7 +1,7 @@
-const express = require('express')
-const { createRequestData, getRequestData } = require('./controllers')
+const express = require('express');
+const { createRequestData, getRequestData } = require('./controllers');
 
-const router = express.Router()
+const router = express.Router();
 
 router.get('/data', getRequestData);
 router.post('/data', createRequestData);

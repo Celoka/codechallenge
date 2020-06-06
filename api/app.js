@@ -19,9 +19,9 @@ app.use(morgan('combined'));
 app.use(router);
 
 startDatabase().then(async () => {
-    app.listen(3001, async () => {
-        console.log('listening on port 3001');
-    });
+  app.listen(3001, async () => {
+    console.log('listening on port 3001');
+  });
 });
 
 module.exports = app;

@@ -5,8 +5,12 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const { startDatabase } = require('./database/mongo');
 const router = require('./routes');
+const dotenv = require('dotenv');
 
 const app = express();
+dotenv.config()
+
+const port = process.env.PORT || 3001;
 
 app.use(helmet());
 
@@ -19,8 +23,8 @@ app.use(morgan('combined'));
 app.use(router);
 
 startDatabase().then(async () => {
-  app.listen(3001, async () => {
-    console.log('listening on port 3001');
+  app.listen(port, async () => {
+    console.log(`listening on port ${port}`);
   });
 });
 

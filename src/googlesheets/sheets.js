@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 import { google } from 'googleapis';
 import transform from './transform';
-import config from './credentials';
+import config from '../credentials';
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';

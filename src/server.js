@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 import { startDatabase } from './database/mongo';
-import router from './routes';
+import router from './database/routes/routes';
 
 const app = express();
 dotenv.config()

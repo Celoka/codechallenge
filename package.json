@@ -4,8 +4,10 @@
   "description": "Coding test",
   "main": "index.js",
   "scripts": {
-    "start": "node ./api/app.js",
-    "start:dev": "nodemon --exec babel-node ./api/app.js",
+    "start": "node src/server.js",
+    "start:dev": "nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/server.js",
     "eslint": "eslint ./",
     "eslint-fix": "eslint ./ --fix"
   },

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { insertData, getData, getTotal } from './database/data';
-import run from '../sheets';
+import { insertData, getData, getTotal } from '../database/data';
+import run from '../googlesheets/sheets';
 
 /**
  * @description This controller gets buy or sell request per string supplied

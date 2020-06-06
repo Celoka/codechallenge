@@ -70,8 +70,8 @@ async function listMajors(auth) {
     if (err) return console.log(`The API returned an error: ${err}`);
     const buyRequest = transform(res.data.valueRanges[0].values);
     const sellRequest = transform(res.data.valueRanges[1].values);
-      writeNewFile('./api/buyRequest.json', JSON.stringify(buyRequest));
-      writeNewFile('./api/sellRequest.json', JSON.stringify(sellRequest));
+      writeNewFile('src/buyRequest.json', JSON.stringify(buyRequest));
+      writeNewFile('src/sellRequest.json', JSON.stringify(sellRequest));
   });
 }
 

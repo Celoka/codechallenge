@@ -1,4 +1,4 @@
-const { getDatabase } = require('./mongo');
+import { getDatabase } from './mongo';
 
 async function insertData(data, collectionName) {
   const database = await getDatabase();
@@ -23,8 +23,4 @@ async function getTotal(collectionName) {
   return await database.collection(collectionName).find({}).count();
 }
 
-module.exports = {
-  insertData,
-  getData,
-  getTotal,
-};
+export { insertData, getData, getTotal };

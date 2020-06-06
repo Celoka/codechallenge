@@ -1,12 +1,11 @@
-const fs = require('fs');
-const readline = require('readline');
-const { google } = require('googleapis');
-const transform = require('./transform');
-const config = require('./credentials');
+import fs from 'fs';
+import readline from 'readline';
+import { google } from 'googleapis';
+import transform from './transform';
+import config from './credentials';
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
-
 
 /**
  * @param {google.auth.OAuth2} oAuth2Client
@@ -71,15 +70,14 @@ async function listMajors(auth) {
     if (err) return console.log(`The API returned an error: ${err}`);
     const buyRequest = transform(res.data.valueRanges[0].values);
     const sellRequest = transform(res.data.valueRanges[1].values);
-    writeNewFile('./api/buyRequest.json', JSON.stringify(buyRequest));
-    writeNewFile('./api/sellRequest.json', JSON.stringify(sellRequest));
+      writeNewFile('./api/buyRequest.json', JSON.stringify(buyRequest));
+      writeNewFile('./api/sellRequest.json', JSON.stringify(sellRequest));
   });
 }
 
 const run = () => {
   if (!config) return console.log('Error loading client secret file');
-  return authorize(config, listMajors);
+  authorize(config, listMajors);
 };
 
-
-module.exports = run;
+export default run;

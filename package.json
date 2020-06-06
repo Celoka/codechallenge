@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./api/app.js",
-    "start:dev": "nodemon ./api/app.js",
+    "start:dev": "nodemon --exec babel-node ./api/app.js",
     "eslint": "eslint ./",
     "eslint-fix": "eslint ./ --fix"
   },

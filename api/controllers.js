@@ -1,8 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-
-const { insertData, getData, getTotal } = require('./database/data');
-const run = require('../sheets');
+import fs from 'fs';
+import path from 'path';
+import { insertData, getData, getTotal } from './database/data';
+import run from '../sheets';
 
 /**
  * @description This controller gets buy or sell request per string supplied
@@ -45,12 +44,12 @@ async function createRequestData(req, res) {
     await run();
     const check = req.body.loadData;
     if (check === 'true') {
-      for (i = 0; i < arr.length; i++){
-        let reqData = fs.readFileSync(path.join(__dirname, `${arr[i]}.json`))
+      for (const item of arr) {
+        let reqData = fs.readFileSync(path.join(__dirname, `${item}.json`))
         let data = JSON.parse(reqData)
-        await insertData(data, arr[i])
+        insertData(data, item)
       }
-      res.status(201).json({ message: 'Data added to database' });
+    res.status(201).json({ message: 'Data added to database' });
     } else {
       res.status(400).json({ message: 'No data was added to the database' });
     }
@@ -59,7 +58,8 @@ async function createRequestData(req, res) {
   }
 }
 
-module.exports = {
+
+export {
   getRequestData,
   createRequestData,
 };

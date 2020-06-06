@@ -1,7 +1,7 @@
-const { MongoMemoryServer } = require('mongodb-memory-server');
-const { MongoClient } = require('mongodb');
-const dotenv = require('dotenv');
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import { MongoClient } from 'mongodb';
 
+import dotenv from 'dotenv';
 
 let database = null;
 
@@ -23,8 +23,7 @@ async function getDatabase() {
   return database;
 }
 
-
-module.exports = {
+export {
   getDatabase,
   startDatabase,
 };

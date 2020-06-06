@@ -39,4 +39,4 @@ const transform = (raw) => {
   return dataArray;
 };
 
-module.exports = transform;
+export default transform;

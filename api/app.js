@@ -1,11 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const { startDatabase } = require('./database/mongo');
-const router = require('./routes');
-const dotenv = require('dotenv');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+
+import { startDatabase } from './database/mongo';
+import router from './routes';
 
 const app = express();
 dotenv.config()
@@ -28,4 +29,3 @@ startDatabase().then(async () => {
   });
 });
 
-module.exports = app;

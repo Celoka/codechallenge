@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { insertData, getData, getTotal } from '../database/data';
-import run from '../googlesheets/sheets';
 
 /**
  * @description This controller gets buy or sell request per string supplied
@@ -40,7 +39,6 @@ async function getRequestData(req, res) {
 async function createRequestData(req, res) {
   const arr = ['buyRequest', 'sellRequest']
   try {
-    await run();
     const check = req.body.loadData;
     if (check === 'true') {
       for (const item of arr) {

@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 
 import { startDatabase } from './database/mongo';
 import router from './database/routes/routes';
+import run from './googlesheets/sheets'
 
 const app = express();
 dotenv.config()
@@ -25,6 +26,7 @@ app.use(router);
 
 startDatabase().then(async () => {
   app.listen(port, async () => {
+    run()
     console.log(`listening on port ${port}`);
   });
 });

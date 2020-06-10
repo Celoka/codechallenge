@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 import { startDatabase } from './database/mongo';
-import router from './database/routes/routes';
+import router from './routes/routes';
 import run from './googlesheets/sheets'
 
 const app = express();

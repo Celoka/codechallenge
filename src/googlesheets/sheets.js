@@ -72,7 +72,7 @@ async function listMajors(auth) {
       'src/buyRequest.json': transform(res.data.valueRanges[0].values),
       'src/sellRequest.json': transform(res.data.valueRanges[1].values)
     }
-    for (let [key, value] of Object.entries(dataObj) {
+    for (let [key, value] of Object.entries(dataObj)) {
       writeNewFile(key, JSON.stringify(value));
     }
   });

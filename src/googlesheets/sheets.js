@@ -68,9 +68,10 @@ async function listMajors(auth) {
     ranges: ['IPHONES!A3:J66', 'IPHONES!L3:U66'],
   }, (err, res) => {
     if (err) return console.log(`The API returned an error: ${err}`);
+    const { valueRanges } = res.data
     const dataObj = {
-      'src/buyRequest.json': transform(res.data.valueRanges[0].values),
-      'src/sellRequest.json': transform(res.data.valueRanges[1].values)
+      'src/buyRequest.json': transform(valueRanges[0].values),
+      'src/sellRequest.json': transform(valueRanges[1].values)
     }
     for (let [key, value] of Object.entries(dataObj)) {
       writeNewFile(key, JSON.stringify(value));

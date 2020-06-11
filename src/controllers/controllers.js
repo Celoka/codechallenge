@@ -46,8 +46,9 @@ async function createRequestData(req, res) {
         let data = JSON.parse(reqData)
          if (await getTotal(item) === data.length) {
           res.status(200).json({ message: 'Data has been loaded' })
-        }
+        } else {
         await insertData(data, item)
+        }
       }
     res.status(201).json({ message: 'Data added to database' });
     } else {
